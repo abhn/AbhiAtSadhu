@@ -24,6 +24,7 @@
     <h2>👨‍💻 Is Abhi really at Sadhu? 💃👯‍♀️🍔</h2>
     <p id="result">Let's find out! <img src="https://i.stack.imgur.com/kOnzy.gif"></p>
     <p id="result-more"></p>
+    <script src="./moment.min.js"></script>
     <script>
       setTimeout(function() {
         fetch('https://abhiatsadhu.abhn.workers.dev/')
@@ -32,8 +33,8 @@
           if(data.isAtSadhu) {
             document.getElementById('result').innerHTML = '❤️🤩 Yes, he is! 🤩❤️';
           } else {
-            document.getElementById('result').innerHTML = '😔 No, he is not 🥲!';
-            document.getElementById('result-more').innerHTML = 'But he was last there at ' + (new Date(data.visitedTime)).toLocaleDateString() + ' at ' + (new Date(data.visitedTime)).toLocaleTimeString() + '.'
+            document.getElementById('result').innerHTML = '😔 No, he is not 🥲';
+            document.getElementById('result-more').innerHTML = 'But he was last seen there ' + moment(data.visitedTime).fromNow() + '!<br/><br/>Check if he\'s up for another round 📲🥘';
           }
         });
       }, 1000);
