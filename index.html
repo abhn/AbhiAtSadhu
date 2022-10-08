@@ -29,7 +29,7 @@
         fetch('https://abhiatsadhu.abhn.workers.dev/')
         .then(response => response.json())
         .then(data => {
-          if(!data.isAtSadhu) {
+          if(data.isAtSadhu) {
             document.getElementById('result').innerHTML = '❤️🤩 Yes, he is! 🤩❤️';
           } else {
             document.getElementById('result').innerHTML = '😔 No, he is not 🥲!';
