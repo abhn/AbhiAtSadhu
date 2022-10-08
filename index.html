@@ -16,22 +16,24 @@
         background-color: #eee;
         color: #333;
         font-family: Helvetica, Arial, sans-serif;
+        text-align: center;
       }
     </style>
   </head>
   <body>
-    <h2>Is Abhi really at Sadhu? 💃👯‍♀️🍔</h2>
+    <h2>👨‍💻 Is Abhi really at Sadhu? 💃👯‍♀️🍔</h2>
     <p id="result">Let's find out! <img src="https://i.stack.imgur.com/kOnzy.gif"></p>
+    <p id="result-more"></p>
     <script>
       setTimeout(function() {
         fetch('https://abhiatsadhu.abhn.workers.dev/')
         .then(response => response.json())
         .then(data => {
-          if(data.isAtSadhu) {
-            console.log('Abhi is at Sadhu!');
-            document.getElementById('result').innerHTML = '🤩 Yes, he is! 🤩';
+          if(!data.isAtSadhu) {
+            document.getElementById('result').innerHTML = '❤️🤩 Yes, he is! 🤩❤️';
           } else {
-            document.getElementById('result').innerHTML = '😔 No, he is not 🥲! But he was last there at ' + (new Date(data.visitedTime)).toLocaleDateString() + ' at ' + (new Date(data.visitedTime)).toLocaleTimeString() + '.';
+            document.getElementById('result').innerHTML = '😔 No, he is not 🥲!';
+            document.getElementById('result-more').innerHTML = 'But he was last there at ' + (new Date(data.visitedTime)).toLocaleDateString() + ' at ' + (new Date(data.visitedTime)).toLocaleTimeString() + '.'
           }
         });
       }, 1000);
